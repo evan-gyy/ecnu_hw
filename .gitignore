@@ -1,0 +1,16 @@
+.idea/*
+dev/*
+test/*
+train/*
+model/*
+
+RIFRE-main/datasets/bert/*
+RIFRE-main/datasets/data/hw_test/*
+__pycache__/
+*/__pycache__/
+/.idea/
+
+*.pdf
+*.docx
+files_order.txt
+Result
