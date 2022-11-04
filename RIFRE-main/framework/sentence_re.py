@@ -94,7 +94,7 @@ class Sentence_RE(nn.Module):
                 num_workers=num_workers)
         self.model = model
         # Criterion
-        self.loss_func = nn.BCEWithLogitsLoss()
+        self.loss_func = nn.BCELoss()
         # Params and optimizer
         params = self.model.parameters()
         self.lr = lr
@@ -202,7 +202,8 @@ class Sentence_RE(nn.Module):
             # micro_f1 = sklearn.metrics.f1_score(label_tot, pred_result, average='micro')
             recall = sklearn.metrics.recall_score(label_tot, pred_result, average='macro')
             precision = sklearn.metrics.precision_score(label_tot, pred_result, average='macro')
-            out = {'precision': precision, 'recall': recall, 'f1_score': macro_f1}
+            micro_f1 = sklearn.metrics.f1_score(label_tot, pred_result, average='micro')
+            out = {'precision': precision, 'recall': recall, 'macro_f1': macro_f1, 'micro_f1': micro_f1, 'acc': avg_acc.avg}
             print(str(out))
         if mode == 'test':
             self.pred_labels = pred_result
